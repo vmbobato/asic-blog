@@ -50,6 +50,9 @@
                 <p>The selection of SegFormerB2 as our primary architecture was based on its superior performance in pixel classification tasks and overall segmentation precision. While we initially explored a hybrid approach combining SAM2 and DeepLabV3+, the SegFormerB2 architecture demonstrated superior performance in our evaluation metrics.</p>
                 <p>Following model selection, we implemented a comprehensive fine-tuning process using our satellite image dataset. This process included adaptation of the training methodology to optimize performance for satellite imagery characteristics and specific land type classification requirements.</p>
                 <p>The final implementation incorporates a sophisticated post-processing pipeline that converts segmentation masks into detailed land type analysis, including percentage coverage calculations and area measurements in square meters. This output provides valuable insights for various applications in urban planning and environmental monitoring.</p>
+                <div class="image-container">
+                    <img src="static/application_diagram.png" alt="Application Diagram">
+                </div>
             </section>
 
             <section id="results" class="blog-section">
@@ -70,7 +73,7 @@
                 <p>While this metric provides a straightforward measure of classification accuracy, it can be misleading in imbalanced datasets where one class dominates the image. We therefore use it in conjunction with IoU for a more comprehensive evaluation.</p>
 
                 <div class="image-container">
-                    <img src="charts.png" alt="Training Performance Charts">
+                    <img src="static/charts.png" alt="Training Performance Charts">
                 </div>
             </section>
 
