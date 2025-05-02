@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASIC - AI for Satellite Image Classification</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+            --border-radius: 8px;
+            --header-height: 60px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-gray);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0 2rem;
+            margin-top: var(--header-height);
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 4rem 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--text-color);
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .blog-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-section {
+            margin-bottom: 3rem;
+        }
+
+        .blog-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        .blog-section h3 {
+            color: var(--primary-color);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .blog-section h4 {
+            color: var(--primary-color);
+            margin: 1.2rem 0 0.8rem;
+        }
+
+        .blog-section p {
+            margin-bottom: 1rem;
+        }
+
+        .blog-section ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-section code {
+            background-color: var(--light-gray);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .blog-section a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .blog-section a:hover {
+            text-decoration: underline;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .blog-content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-container">
+        <div class="nav-logo">ASIC</div>
+        <div class="nav-menu">
+            <a href="#overview">Overview</a>
+            <a href="#motivation">Motivation</a>
+            <a href="#approach">Approach</a>
+            <a href="#results">Results</a>
+            <a href="#conclusion">Conclusion</a>
+            <a href="team.html">Team</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>AI for Satellite Image Classification</h1>
+            <p>Advanced deep learning techniques for precise land type classification and area quantification</p>
+        </div>
+        <div class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="blog-content">
+            <section id="overview" class="blog-section">
+                <h2>Overview</h2>
+                <p>Accurate measurement and monitoring of land areas, including urban developments, forested regions, and glacial formations, presents significant challenges in environmental and urban planning. Our project addresses this challenge through the implementation of advanced artificial intelligence techniques for satellite image classification. By leveraging state-of-the-art deep learning architectures, our system performs pixel-level semantic segmentation of satellite imagery, enabling precise classification of various land types including urban areas, forested regions, agricultural land, and glacial formations.</p>
+                <p>The AI for Satellite Image Classification (ASIC) system represents a sophisticated software solution that employs deep learning methodologies for pixel-level classification of satellite imagery. The primary objective is to perform semantic segmentation of satellite images and subsequently calculate the proportional coverage of each land type class, expressed both as a percentage and in absolute area measurements. This capability has significant applications across multiple domains, including urban planning, environmental monitoring, and climate change research.</p>
+            </section>
+
+            <section id="motivation" class="blog-section">
+                <h2>Motivation</h2>
+                <p>Land use classification and monitoring systems are critical components in modern decision-making processes across various sectors, including urban development, agricultural management, and environmental conservation. The ability to accurately quantify and monitor land use changes is essential for effective resource management and policy implementation.</p>
+                <p>Traditional land use mapping methodologies, typically conducted on an annual basis, are insufficient for addressing the rapid changes in land use patterns observed in contemporary environments. Our solution implements an AI-driven pixel-level segmentation approach that generates seven-class land use masks from satellite imagery, significantly reducing the time required for land use analysis. The urgency of this solution is particularly evident in urban expansion monitoring. According to United Nations projections, urban areas are expected to expand by more than 200% by 2025, necessitating more efficient monitoring systems. Our system provides precise land type classification and area quantification, enabling more effective monitoring and management of these changes.</p>
+            </section>
+
+            <section id="approach" class="blog-section">
+                <h2>Approach</h2>
+                <p>Our methodology began with a comprehensive evaluation of multiple image segmentation architectures, including SAM2, DeepLabV3+ with ResNet50 encoder, and SegFormerB2. Each model was evaluated based on its performance in pixel-level classification accuracy, computational efficiency, and ability to handle multi-scale features.</p>
+                <p>The selection of SegFormerB2 as our primary architecture was based on its superior performance in pixel classification tasks and overall segmentation precision. While we initially explored a hybrid approach combining SAM2 and DeepLabV3+, the SegFormerB2 architecture demonstrated superior performance in our evaluation metrics.</p>
+                <p>Following model selection, we implemented a comprehensive fine-tuning process using our satellite image dataset. This process included adaptation of the training methodology to optimize performance for satellite imagery characteristics and specific land type classification requirements.</p>
+                <p>The final implementation incorporates a sophisticated post-processing pipeline that converts segmentation masks into detailed land type analysis, including percentage coverage calculations and area measurements in square meters. This output provides valuable insights for various applications in urban planning and environmental monitoring.</p>
+            </section>
+
+            <section id="results" class="blog-section">
+                <h2>Experimental Results</h2>
+                <p>Our evaluation methodology incorporated both quantitative metrics and qualitative analysis of segmentation results. The model demonstrated varying performance across different land type classes, with particular success in agriculture and rangeland classification. This variation can be attributed to the inherent class imbalance in the training dataset.</p>
+
+                <h3>Evaluation Metrics</h3>
+                <p>The performance of our segmentation model was evaluated using several key metrics, each providing unique insights into different aspects of the model's capabilities:</p>
+                
+                <h4>Intersection over Union (IoU)</h4>
+                <p>IoU, also known as the Jaccard Index, is calculated as:</p>
+                <p><code>IoU = (True Positive) / (True Positive + False Positive + False Negative)</code></p>
+                <p>This metric measures the overlap between the predicted segmentation mask and the ground truth mask. A perfect segmentation would yield an IoU of 1.0, while complete mismatch results in 0.0. IoU is particularly valuable because it penalizes both false positives and false negatives equally, making it robust for evaluating segmentation quality across different class distributions.</p>
+
+                <h4>Pixel Accuracy</h4>
+                <p>Pixel accuracy is computed as:</p>
+                <p><code>Pixel Accuracy = (True Positive + True Negative) / Total Pixels</code></p>
+                <p>While this metric provides a straightforward measure of classification accuracy, it can be misleading in imbalanced datasets where one class dominates the image. We therefore use it in conjunction with IoU for a more comprehensive evaluation.</p>
+
+                <div class="image-container">
+                    <img src="charts.png" alt="Training Performance Charts">
+                </div>
+            </section>
+
+            <section id="conclusion" class="blog-section">
+                <h2>Conclusion</h2>
+                <p>Our implementation demonstrates the successful adaptation of modern segmentation architectures for satellite image analysis. The ASIC system provides valuable capabilities in land type classification and area quantification, with significant potential applications in urban planning and environmental monitoring.</p>
+                <p>The primary challenges identified include handling complex, mixed-region scenarios and addressing class imbalance in the training data. These challenges are particularly evident in the segmentation of urban areas and natural features with fuzzy boundaries.</p>
+                <p>While our current implementation provides satisfactory performance in the web application context, professional deployment would require further optimization to improve IoU and pixel accuracy metrics across all land type classes. Future work will focus on addressing these limitations through architectural improvements and enhanced training methodologies.</p>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 ASIC - Advanced Satellite Image Classification by Vinicius Bobato, Andreas Bardram, Theo Lin</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
