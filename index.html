@@ -75,7 +75,7 @@
                     more responsibly.
                     </p>
             </section>
-            <section class="blog-section">
+            <section id="related-work" class="blog-section">
                 <h2>Related Work</h2>
                 <p>
                     This is a project that has been done before, the image segmentation part at least. Where we 
@@ -85,7 +85,7 @@
                 <p>
                     For training and testing, there are a few common datasets used, like DeepGlobe, EuroSat, 
                     and Sen2Land. These datasets include different types of land use and come with correct 
-                    segmentation masks. We ended up using the DeepGlobe dataset [deepglobe], which we will talk more 
+                    segmentation masks. We ended up using the DeepGlobe dataset [10], which we will talk more 
                     about later.
                 </p>
                 <p>
@@ -108,8 +108,8 @@
                 <p>
                     Beyond model benchmarks, several high-impact projects demonstrate real-world segmentation at scale.
                     SpaceNet 8 tackled multiclass mapping for hurricane and flood response, rapidly delineating inundated
-                    roads and infrastructure in Hurricane Ida’s aftermath in New Orleans and during Germany’s 2021 floods [4].
-                    Their work underscores segmentation’s vital role in emergency response.
+                    roads and infrastructure in Hurricane Ida's aftermath in New Orleans and during Germany's 2021 floods [4].
+                    Their work underscores segmentation's vital role in emergency response.
                 </p>
                 <p>
                     Sen2‑Agri processes Sentinel‑2 and Landsat 8 time series to produce cloud‑free composites, dynamic cropland masks,
@@ -117,7 +117,7 @@
                     pipelines can deliver consistent, timely insights.
                 </p>
                 <p>
-                    Meta’s SAM2 [6] has been tested for field‑boundary detection on Sentinel‑2 imagery. In a practical tutorial, automatic segmentation
+                    Meta's SAM2 [6] has been tested for field‑boundary detection on Sentinel‑2 imagery. In a practical tutorial, automatic segmentation
                     captured only a handful of fields and not the full images, whereas the manual mode, where users drop guide points, dramatically
                     improved boundary accuracy, although some planted areas remained undetected [7]. 
                 </p>
